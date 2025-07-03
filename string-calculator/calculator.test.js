@@ -15,3 +15,9 @@ test('returns number itself when only one number provided in the string', ()=>{
 test('returns addition of two numbers in the string',()=>{
     expect(add("3,2")).toBe(5);
 }); 
+
+//Test for strings having unknown amount of numbers which are comma seperated
+test('returns summation of all the numbers in the given string', ()=>{
+    expect(add("2,35,56,1")).toBe(94);
+    expect(add("111,22,44")).toBe(177);
+});
