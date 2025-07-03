@@ -4,7 +4,6 @@ function add(numbers){
     if(numbers === "")
         return 0;
     //implementation logic for string including a single decimal number
-    console.log(typeof(numbers))
     if(!numbers.includes(','))
         return parseInt(numbers, 10);
 }

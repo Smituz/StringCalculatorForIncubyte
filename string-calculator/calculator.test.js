@@ -10,3 +10,8 @@ test('returns 0 for an empty string', ()=>{
 test('returns number itself when only one number provided in the string', ()=>{
     expect(add("1")).toBe(1);
 });
+
+//Test for strings having two numbers which are comma seperated
+test('returns addition of two numbers in the string',()=>{
+    expect(add("3,2")).toBe(5);
+}); 
