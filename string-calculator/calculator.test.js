@@ -12,12 +12,17 @@ test('returns number itself when only one number provided in the string', ()=>{
 });
 
 //Test for strings having two numbers which are comma seperated
-test('returns addition of two numbers in the string',()=>{
+test('returns addition of two numbers in the string which are comma seperated',()=>{
     expect(add("3,2")).toBe(5);
 }); 
 
 //Test for strings having unknown amount of numbers which are comma seperated
-test('returns summation of all the numbers in the given string', ()=>{
+test('returns summation of all the list of comma-seperated numbers in the given string', ()=>{
     expect(add("2,35,56,1")).toBe(94);
     expect(add("111,22,44")).toBe(177);
+});
+
+//Test for strings having "," as well as  "\n" delimiters
+test('returns summation of all the numbers in the string having "," as well as "\n" as delimiters', ()=>{
+    expect(add("1,2\n3,4\n15")).toBe(25);
 });
