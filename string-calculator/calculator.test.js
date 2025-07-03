@@ -26,3 +26,8 @@ test('returns summation of all the list of comma-seperated numbers in the given 
 test('returns summation of all the numbers in the string having "," as well as "\n" as delimiters', ()=>{
     expect(add("1,2\n3,4\n15")).toBe(25);
 });
+
+//Test for strings having custom delimeter
+test('returns summation of numbers having a custom delimiter',()=>{
+    expect(add("//&\n1&2&97")).toBe(100);
+});
