@@ -4,14 +4,12 @@ function add(numbers){
     if(numbers === "")
         return 0;
 
-    //implementation logic for string including a single decimal number
-    if(!numbers.includes(','))
-        return parseInt(numbers, 10);
+    //implentation logic for input string having single number or two numbers comma seperated as input 
 
-    //implementation for strings with two single numbers which are comma seperated
-    if(numbers.includes(',')){
-        return (parseInt(numbers[0],10) + parseInt(numbers[2],10));
-    }
+    //splitting and parsing the array to get input number/s as int
+    var numArray = numbers.split(',');
+    numArray = numArray.map(n => parseInt(n,10));
+
+    return numArray.reduce((sum, val) => sum + val, 0);
 }
-
 module.exports={ add }; 
