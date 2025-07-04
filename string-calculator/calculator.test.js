@@ -59,3 +59,10 @@ test('accepts custom delimiter of any length in the input string', ()=>{
      expect(add("//[&&&]\n1&&&2&&&97")).toBe(100);
 
 });
+
+//Test for multiple custom delimiters of any length
+test('accepts multiple custom delimiters of any length in the input string',()=>{
+    expect(add("//[&&][;]\n1;2&&97")).toBe(100);
+    expect(add("//[&&][###]\n1&&2###97")).toBe(100);
+
+});
