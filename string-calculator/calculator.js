@@ -26,7 +26,7 @@ function add(numbers){
 
 //Helper function to apply same logic to both the available cases
 function sumParsednumbers(numArray){
-    var numArray = numArray.map(n => parseInt(n,10));
+    var numArray = numArray.map(n => parseInt(n,10)).filter(n => n<=1000);
 
     //Checking presence of negative numbers
     checkNegatives(numArray);
