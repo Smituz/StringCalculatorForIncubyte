@@ -31,3 +31,9 @@ test('returns summation of all the numbers in the string having "," as well as "
 test('returns summation of numbers having a custom delimiter',()=>{
     expect(add("//&\n1&2&97")).toBe(100);
 });
+
+//Test for strings having a single negative interger
+test('returns the single negative number present in the string', ()=>{
+    expect(add("5,3,2,-3,8")).toBe("negatives not allowed: -3.");
+    expect(add("//;\n1#-3#4")).toBe("negatives not allowed: -3.");
+});
