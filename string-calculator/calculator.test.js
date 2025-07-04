@@ -56,5 +56,6 @@ test('all numbers in the input string greater than 1000 are ignored', ()=>{
 //Test for custom delimiter of any length in the input string
 test('accepts custom delimiter of any length in the input string', ()=>{
      expect(add("//[&&]\n1&&2&&97")).toBe(100);
+     expect(add("//[&&&]\n1&&&2&&&97")).toBe(100);
 
 });

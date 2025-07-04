@@ -11,13 +11,24 @@ function add(numbers){
 
     //checkNegatives Helper function now handles the above case
 
-    //If input starts with custom delimiter, extract it and split accordingly.
-    if(numbers.startsWith("//")){
-        var delimiter = numbers[2];
-        numbers = numbers.split("//" + delimiter + "\n").join("");
-        var numArray = numbers.split(delimiter);
-        return sumParsednumbers(numArray);
+    //If input starts with custom delimiter of any length, extract it and split accordingly.
+    if (numbers.startsWith("//")) {
+    let delimiter;
+    
+    if (numbers.startsWith("//[")) {
+        // Custom delimiter of any length inside [ ]
+        delimiter = numbers.match(/^\/\/\[(.*)\]\n/)[1];
+        numbers = numbers.split('\n').slice(1).join('\n'); // remove the delimiter line
+    } else {
+        // Single-character delimiter (no [ ])
+        delimiter = numbers[2];
+        numbers = numbers.slice(4); // remove "//x\n"
     }
+
+    const numArray = numbers.split(delimiter);
+    return sumParsednumbers(numArray);
+}
+
 
     // Split and parse the input into integers using the allowed delimiters: "," and "\n".
     var numArray = numbers.replace(/\n/g, ',').split(',');
