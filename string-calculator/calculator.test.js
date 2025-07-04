@@ -6,7 +6,7 @@ test('returns 0 for an empty string', ()=>{
     expect(add("")).toBe(0);
 });
 
-//Test for Single Digit Imput String
+//Test for Single Digit Input String
 test('returns number itself when only one number provided in the string', ()=>{
     expect(add("1")).toBe(1);
 });
@@ -65,4 +65,12 @@ test('accepts multiple custom delimiters of any length in the input string',()=>
     expect(add("//[&&][;]\n1;2&&97")).toBe(100);
     expect(add("//[&&][###]\n1&&2###97")).toBe(100);
 
+});
+
+//Test for getCalledCount() to return total number of time "add()" of StringCalculator was invoked.
+test('returns count on how many times add() was invoked using getCalledCount()',()=>{
+    const calc = new StringCalculator();
+    calc.add("1,2\n,3");
+    calc.add("//[&&]\n1&&2&&97");
+    calc.add("");
 });

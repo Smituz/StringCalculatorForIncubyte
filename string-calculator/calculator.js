@@ -1,9 +1,10 @@
-//function to add numbers given in string
+//function to add numbers given in a string
 function add(numbers){
     //Return 0 for an empty field
     if(numbers === "")
         return 0;
 
+    //Dealing with custom delimiters in different formats 
     if (numbers.startsWith("//")) {
     let delimiters = [];
 
@@ -35,7 +36,7 @@ function add(numbers){
     return sumParsednumbers(numArray);
 }
 
-//Helper function to apply same logic to both the available cases
+//Helper function which parses and sums numbers from the string while filtering >1000 and checking for negatives.
 function sumParsednumbers(numArray){
     var numArray = numArray.map(n => parseInt(n,10)).filter(n => n<=1000);
 
@@ -45,7 +46,7 @@ function sumParsednumbers(numArray){
     return numArray.reduce((sum, val) => sum + val, 0);
 }
 
-//Helper function to throw exception for negatives
+//Helper function to throw exception for negatives.
 function checkNegatives(numArray){
     const negatives = numArray.filter(n => n<0);
 
@@ -55,7 +56,7 @@ function checkNegatives(numArray){
     return;
 }
 
-//Helper fucntion to escape special regex characters in delimiters
+//Helper function to escape special regex characters in delimiters
 function escapeRegex(s) {
     return s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 }
