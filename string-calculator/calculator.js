@@ -3,6 +3,12 @@ function add(numbers){
     //Return 0 for an empty field
     if(numbers === "")
         return 0;
+    //Check for string having a single negative number
+    if(numbers.includes("-")){
+            let negativeNumber = -(parseInt(numbers[numbers.indexOf('-',0) + 1 ]));
+            throw new Error("negatives not allowed: "+ negativeNumber + ".");    
+    }
+
     //If input starts with custom delimiter, extract it and split accordingly.
     if(numbers.startsWith("//")){
         var delimiter = numbers[2];
