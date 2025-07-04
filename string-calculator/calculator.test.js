@@ -43,3 +43,12 @@ test('throws exception for strings having multiple negative numbers', ()=>{
     expect(() => add("5,3,-2,-3,8")).toThrow("negatives not allowed: -2,-3.");
     expect(() => add("//;\n-1;-3;4")).toThrow("negatives not allowed: -1,-3.");
 });
+
+
+/******************************* Extra Testing Functionalities *********************************************************************/ 
+
+
+//Test for string containing numbers greater than 1000. The numbers should be ignored in calculation
+test('all numbers in the input string greater than 1000 are ignored', ()=>{
+    expect(add("1,10000,1000,2,4,1")).toBe(1008);
+});
