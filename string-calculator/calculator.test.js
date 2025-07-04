@@ -52,3 +52,9 @@ test('throws exception for strings having multiple negative numbers', ()=>{
 test('all numbers in the input string greater than 1000 are ignored', ()=>{
     expect(add("1,10000,1000,2,4,1")).toBe(1008);
 });
+
+//Test for custom delimiter of any length in the input string
+test('accepts custom delimiter of any length in the input string', ()=>{
+     expect(add("//[&&]\n1&&2&&97")).toBe(100);
+
+});
