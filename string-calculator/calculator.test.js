@@ -33,7 +33,7 @@ test('returns summation of numbers having a custom delimiter',()=>{
 });
 
 //Test for strings having a single negative interger
-test('returns the single negative number present in the string', ()=>{
-    expect(add("5,3,2,-3,8")).toBe("negatives not allowed: -3.");
-    expect(add("//;\n1#-3#4")).toBe("negatives not allowed: -3.");
+test('throws exception for a single negative number', ()=>{
+    expect(() => add("5,3,2,-3,8")).toThrow("negatives not allowed: -3.");
+    expect(() => add("//;\n1#-3#4")).toThrow("negatives not allowed: -3.");
 });
