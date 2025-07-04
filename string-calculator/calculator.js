@@ -3,33 +3,33 @@ function add(numbers){
     //Return 0 for an empty field
     if(numbers === "")
         return 0;
-    // Check for string having a single negative number
-    // if(numbers.includes("-")){
-    //         let negativeNumber = -(parseInt(numbers[numbers.indexOf('-',0) + 1 ]));
-    //         throw new Error("negatives not allowed: "+ negativeNumber + ".");    
-    // }
 
-    //checkNegatives Helper function now handles the above case
-
-    //If input starts with custom delimiter of any length, extract it and split accordingly.
     if (numbers.startsWith("//")) {
-    let delimiter;
-    
+    let delimiters = [];
+
     if (numbers.startsWith("//[")) {
-        // Custom delimiter of any length inside [ ]
-        delimiter = numbers.match(/^\/\/\[(.*)\]\n/)[1];
-        numbers = numbers.split('\n').slice(1).join('\n'); // remove the delimiter line
+        // Match all custom delimiters between square brackets
+        const delimiterMatches = numbers.match(/\/\/(\[.*?\])+\n/);
+        if (delimiterMatches) {
+            // Extract all delimiters
+            const delimiterPattern = /\[(.*?)\]/g;
+            let match;
+            while ((match = delimiterPattern.exec(delimiterMatches[0])) !== null) {
+                delimiters.push(match[1]);
+            }
+        }
+        numbers = numbers.split('\n').slice(1).join('\n'); // Remove delimiter declaration line
     } else {
-        // Single-character delimiter (no [ ])
-        delimiter = numbers[2];
-        numbers = numbers.slice(4); // remove "//x\n"
+        // Single-character delimiter (no brackets)
+        delimiters.push(numbers[2]);
+        numbers = numbers.slice(4); // Remove //x\n
     }
 
-    const numArray = numbers.split(delimiter);
+    // Build a regex to split using all delimiters
+    const splitRegex = new RegExp(delimiters.map(d => escapeRegex(d)).join('|'), 'g');
+    const numArray = numbers.split(splitRegex);
     return sumParsednumbers(numArray);
 }
-
-
     // Split and parse the input into integers using the allowed delimiters: "," and "\n".
     var numArray = numbers.replace(/\n/g, ',').split(',');
     return sumParsednumbers(numArray);
@@ -54,4 +54,10 @@ function checkNegatives(numArray){
     }
     return;
 }
+
+//Helper fucntion to escape special regex characters in delimiters
+function escapeRegex(s) {
+    return s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
+
 module.exports={ add }; 
