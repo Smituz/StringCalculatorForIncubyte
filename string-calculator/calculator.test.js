@@ -35,11 +35,11 @@ test('returns summation of numbers having a custom delimiter',()=>{
 //Test for strings having a single negative interger
 test('throws exception for a single negative number', ()=>{
     expect(() => add("5,3,2,-3,8")).toThrow("negatives not allowed: -3.");
-    expect(() => add("//;\n1#-3#4")).toThrow("negatives not allowed: -3.");
+    expect(() => add("//;\n1;-3;4")).toThrow("negatives not allowed: -3.");
 });
 
 //Test for strings having multiple negative intergers
 test('throws exception for strings having multiple negative numbers', ()=>{
     expect(() => add("5,3,-2,-3,8")).toThrow("negatives not allowed: -2,-3.");
-    expect(() => add("//;\n-1#-3#4")).toThrow("negatives not allowed: -1,-3.");
+    expect(() => add("//;\n-1;-3;4")).toThrow("negatives not allowed: -1,-3.");
 });
