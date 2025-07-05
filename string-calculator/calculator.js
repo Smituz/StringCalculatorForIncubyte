@@ -42,7 +42,7 @@ class StringCalculator {
             return this.#sumParsednumbers(numArray);
         }
         // Split and parse the input into integers using the allowed delimiters: "," and "\n".
-        var numArray = numbers.replace(/\n/g, ',').split(',');
+        const numArray = numbers.replace(/\n/g, ',').split(',');
         return this.#sumParsednumbers(numArray);
     }
 
@@ -55,7 +55,7 @@ class StringCalculator {
 
     //Helper function which parses and sums numbers from the string while filtering >1000 and checking for negatives.
     #sumParsednumbers(numArray) {
-        var numArray = numArray.map(n => parseInt(n, 10)).filter(n => n <= 1000);
+        const numArray = numArray.map(n => parseInt(n, 10)).filter(n => n <= 1000);
 
         //Checking presence of negative numbers
         this.#checkNegatives(numArray);
